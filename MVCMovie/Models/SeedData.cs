@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MVCMovie.Models
@@ -13,6 +15,11 @@ namespace MVCMovie.Models
             using (var context = new MvcMovieContext(
                 serviceProvider.GetRequiredService<DbContextOptions<MvcMovieContext>>()))
             {
+                //Create tables
+                //context.Database.EnsureCreated();
+                //RelationalDatabaseCreator databaseCreator =
+                //(RelationalDatabaseCreator)context.Database.GetService<IDatabaseCreator>();
+                //databaseCreator.CreateTables();
                 // Look for any movies.
                 if (context.Movie.Any())
                 {
